@@ -6,7 +6,7 @@ namespace Movies.API.Data
     {
         public static void SeedAsync(MoviesContext moviesContext)
         {
-            if (!moviesContext.Movie.Any())
+            if (!moviesContext.Movies.Any())
             {
                 var movies = new List<Movie>
                 {
@@ -91,7 +91,7 @@ namespace Movies.API.Data
                         Owner = "bob"
                     }
                 };
-                moviesContext.Movie.AddRange(movies);
+                moviesContext.Movies.AddRange(movies);
                 moviesContext.SaveChanges();
             }
         }
