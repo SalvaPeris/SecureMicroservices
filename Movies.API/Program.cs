@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Movies.API.Data;
 
 internal class Program
@@ -15,6 +15,16 @@ internal class Program
         builder.Services.AddDbContext<MoviesContext>(options =>
                     options.UseInMemoryDatabase("Movies"));
 
+        builder.Services.AddAuthentication("Bearer")
+                    .AddJwtBearer("Bearer", options =>
+                    {
+                        options.Authority = "https://localhost:5005";
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateAudience = false
+                        };
+                    });
+
         var app = builder.Build();
 
         SeedDatabase(app);
@@ -26,7 +36,9 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
+        app.UseRouting();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();
