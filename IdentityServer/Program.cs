@@ -1,5 +1,4 @@
 using IdentityServer;
-using IdentityServer4.Test;
 
 internal class Program
 {
