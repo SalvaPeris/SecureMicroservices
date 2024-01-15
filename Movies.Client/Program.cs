@@ -31,13 +31,13 @@ builder.Services.AddHttpClient("IDPClient", client =>
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton(new ClientCredentialsTokenRequest
-{
-    Address = "https://localhost:5005/connect/token",
-    ClientId = "movieClient",
-    ClientSecret = "secret",
-    Scope = "movieAPI"
-});
+//builder.Services.AddSingleton(new ClientCredentialsTokenRequest
+//{
+//    Address = "https://localhost:5005/connect/token",
+//    ClientId = "movieClient",
+//    ClientSecret = "secret",
+//    Scope = "movieAPI"
+//});
 
 builder.Services.AddAuthentication(options =>
                 {
@@ -51,10 +51,12 @@ builder.Services.AddAuthentication(options =>
 
                     options.ClientId = "movies_mvc_client";
                     options.ClientSecret = "secret";
-                    options.ResponseType = "code";
+                    options.ResponseType = "code id_token";
 
                     options.Scope.Add("openid");
                     options.Scope.Add("profile");
+                    options.Scope.Add("movieAPI");
+
                     //options.Scope.Add("address");
                     //options.Scope.Add("email");
                     //options.Scope.Add("roles");
@@ -65,7 +67,7 @@ builder.Services.AddAuthentication(options =>
                     //options.ClaimActions.DeleteClaim("auth_time");
                     //options.ClaimActions.MapUniqueJsonKey("role", "role");
 
-                    //options.Scope.Add("movieAPI");
+
 
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
