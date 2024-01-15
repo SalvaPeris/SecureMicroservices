@@ -88,7 +88,9 @@ namespace IdentityServer
                     Claims = new List<Claim>
                     {
                         new Claim(JwtClaimTypes.GivenName, "Salva"),
-                        new Claim(JwtClaimTypes.FamilyName, "Peris")
+                        new Claim(JwtClaimTypes.FamilyName, "Peris"),
+                        new Claim(JwtClaimTypes.Email, "speris@gmail.com"),
+                        new Claim(JwtClaimTypes.Role, "admin")
                     }
                 }
             };
