@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
+using Movies.API.ApiServices;
 using Movies.API.Data;
 
 internal class Program
@@ -29,6 +31,18 @@ internal class Program
         {
             options.AddPolicy("ClientIdPolicy", policy => policy.RequireClaim("client_id", "movies_mvc_client"));
         });
+
+        builder.Services.AddHttpContextAccessor();
+
+        builder.Services.AddHttpClient("IDPClient", client =>
+        {
+            client.BaseAddress = new Uri("https://localhost:5005/");
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+        });
+
+
+        builder.Services.AddScoped<IIdentityApiService, IdentityApiService>();
 
         var app = builder.Build();
          

@@ -18,7 +18,7 @@ namespace Movies.API.Data
                         Rating = "9.3",
                         ImageUrl = "images/src",
                         ReleaseDate = new DateTime(1994, 5, 5),
-                        Owner = "alice"
+                        Owner = "Salva"
                     },
                     new Movie
                     {
@@ -48,7 +48,7 @@ namespace Movies.API.Data
                         Rating = "8.9",
                         ImageUrl = "images/src",
                         ReleaseDate = new DateTime(1957, 5, 5),
-                        Owner = "bob"
+                        Owner = "Salva"
                     },
                     new Movie
                     {

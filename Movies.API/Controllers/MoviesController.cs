@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Movies.API.ApiServices;
 using Movies.API.Data;
 using Movies.API.Models;
+using System.Security.Claims;
 
 namespace Movies.API.Controllers
 {
@@ -12,17 +14,22 @@ namespace Movies.API.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly MoviesContext _context;
+        private readonly IIdentityApiService _identityApiService;
 
-        public MoviesController(MoviesContext context)
+        public MoviesController(MoviesContext context, IIdentityApiService identityApiService)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _identityApiService = identityApiService ?? throw new ArgumentNullException(nameof(identityApiService));
         }
 
         // GET: api/Movies
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
         {
-            return await _context.Movies.ToListAsync();
+            var userInfoDictionary = await this._identityApiService.GetUserInfo();
+            string userName = userInfoDictionary != null && userInfoDictionary.Count() > 0 && userInfoDictionary.ContainsKey("given_name") ? userInfoDictionary["given_name"] : "";
+            
+            return await _context.Movies.Where(m => m.Owner == userName).ToListAsync();
         }
 
         // GET: api/Movies/5
