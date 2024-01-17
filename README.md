@@ -26,4 +26,5 @@ Also over these picture, we have also apply the **claim based authentications**.
 * **IdentityServer -> https://localhost:5005/**
 
 Check the application with logging the system with below credentials;
-* **username - password 1 : speris - speris**
+* **username: speris**
+* **password: speris**
