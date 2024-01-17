@@ -1,20 +1,15 @@
 
-# Securing Microservices with IdentityServer4, OAuth2 and OpenID Connect fronted by Ocelot API Gateway
-
-### Overall Picture
-See the overall picture of **implementations on secure microservices with using standalone Identity Server 4 and backing with Ocelot API Gateway** on real-world **e-commerce microservices** project;
-
-![Securing Microservices with IS4](https://github.com/SalvaPeris/SecureMicroservices/assets/79948536/19a46ec8-4019-4ea9-9f7e-9d68d61afe61)
+# Secured Microservices with IS4, OAuth2 and OIDC with Ocelot API Gateway
 
 In this repository, you will see that how to secure microservices with using **standalone Identity Server 4** and backing with **Ocelot API Gateway**. We’re going to protect our ASP.NET Web MVC and API applications with using **OAuth 2 and OpenID Connect** in IdentityServer4. Securing your web application and API with tokens, working with claims, authentication and authorization middlewares and applying policies, and so on.
 
 ![Overall Picture of Repository](https://github.com/SalvaPeris/SecureMicroservices/assets/79948536/a866e1d6-376b-4642-9bed-72be3fbc139a)
 
 ### Movies.API
-First of all, we are going to develop **Movies.API** project and protect this API resources with **IdentityServer4 OAuth 2.0 implementation**. Generate **JWT Token** with client_credentials from IdentityServer4 and will use this token for securing Movies.API protected resources.
+First of all, we are going to develop **Movies.API** project and protect this API resources with **IS4 OAuth 2.0 implementation**.
 
 ### Movies.MVC
-After that, we are going to develop Movies.MVC Asp.Net project for Interactive Client of our application. This Interactive Movies.MVC Client application will be secured with OpenID Connect in IdentityServer4. Our client application pass credentials with logging to an Identity Server and receive back a JSON Web Token (JWT).
+After that, we are going to develop Movies.MVC Asp.Net project for Interactive Client of our application. This Interactive Movies.MVC Client application will be secured with OpenID Connect in IdentityServer4.
 
 ### Identity Server
 Also, we are going to develop centralized standalone **Authentication Server** and **Identity Provider** with implementing IdentityServer4 package and the name of microservice is Identity Server.
@@ -23,9 +18,6 @@ With Identity Server, we can provide authentication and access control for our w
 
 ### Ocelot API Gateway
 Lastly, we are going to develop **Ocelot API Gateway** and make secure protected API resources over the Ocelot API Gateway with transferring **JWT web tokens**.
-Once the client has a bearer token it will call the API endpoint which is fronted by Ocelot. Ocelot is working as a reverse proxy.
-After Ocelot reroutes the request to the internal API, it will present the token to Identity Server in the **authorization pipeline**. If the client is authorized the request will be processed and a list of movies will be sent back to the client.
-
 Also over these picture, we have also apply the **claim based authentications**.
 
 ## Installation
@@ -37,8 +29,9 @@ Follow these steps to get your development environment set up:
 You will see 4 project console window and 1 chrome window for client application.
 
 * **Movies.Client -> https://localhost:5002/**
+* **Movies.API -> https://localhost:5001/**
+* **API.Gateway -> https://localhost:5010/**
+* **IdentityServer -> https://localhost:5005/**
 
 Check the application with logging the system with below credentials;
-
-* **username - password 1 : alice - a1**
-* **username - password 2 : bob - b1**
+* **username - password 1 : speris - speris**
