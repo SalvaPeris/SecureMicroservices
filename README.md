@@ -1,7 +1,7 @@
 
 # Secured Microservices with IS4, OAuth2 and OIDC with Ocelot API Gateway
 
-In this repository, you will see that how to secure microservices with using **standalone Identity Server 4** and backing with **Ocelot API Gateway**. We’re going to protect our ASP.NET Web MVC and API applications with using **OAuth 2 and OpenID Connect** in IdentityServer4. Securing your web application and API with tokens, working with claims, authentication and authorization middlewares and applying policies, and so on.
+In this repository, you will see that how to secure microservices with using **standalone Identity Server 4** and backing with **Ocelot API Gateway**. We’re going to protect our ASP.NET Web MVC and API applications with using **OAuth 2 and OpenID Connect** in IS4. Securing your web application and API with tokens, working with claims, authentication and authorization middlewares and applying policies, and so on.
 
 ![Overall Picture of Repository](https://github.com/SalvaPeris/SecureMicroservices/assets/79948536/a866e1d6-376b-4642-9bed-72be3fbc139a)
 
@@ -19,14 +19,6 @@ With Identity Server, we can provide authentication and access control for our w
 ### Ocelot API Gateway
 Lastly, we are going to develop **Ocelot API Gateway** and make secure protected API resources over the Ocelot API Gateway with transferring **JWT web tokens**.
 Also over these picture, we have also apply the **claim based authentications**.
-
-## Installation
-Follow these steps to get your development environment set up:
-1. Check All projects run profiles. One by one Right Click the project file, open Properties window and check the debug section. Launch Profile should be the "Project" and App URLs should be the same as big picture.
-2. For all projects, one by one, Set a Startup project and see the Run profile on the Run button. Change the default running profile to IIS Express to Project name.
-3. Multiple startup projects. Right click the solution, open Properties, and set Multiple startup project and Start all 4 application click apply and ok.
-4. Now you can run the overall application with Click Start button or F5.
-You will see 4 project console window and 1 chrome window for client application.
 
 * **Movies.Client -> https://localhost:5002/**
 * **Movies.API -> https://localhost:5001/**
